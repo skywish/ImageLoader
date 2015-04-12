@@ -39,8 +39,7 @@ public class MainActivity extends Activity {
                         if (numColumns > 0) {
                             int columnWidth = (mPhotoWall.getWidth() / numColumns) -
                                     mImageThumbSpacing;
-                            double radio = Math.random() / 2 + 1.0;
-                            int columnHeight = (int) Math.floor(columnWidth * radio);
+                            int columnHeight = (int) Math.floor(columnWidth * 1.6);
                             mAdpater.setItemHeight(columnHeight);
                             mPhotoWall.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         }
