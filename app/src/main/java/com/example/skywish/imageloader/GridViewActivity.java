@@ -9,10 +9,10 @@ import com.example.skywish.imageloader.Resouce.Images;
 import com.example.skywish.imageloader.adapter.PhotoWallAdapter;
 
 
-public class MainActivity extends Activity {
+public class GridViewActivity extends Activity {
 
     private GridView mPhotoWall;
-    private PhotoWallAdapter mAdpater;
+    private PhotoWallAdapter mAdapter;
     private int mImageThumbSize;
     private int mImageThumbSpacing;
 
@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
         mImageThumbSpacing = getResources().getDimensionPixelSize(
                 R.dimen.image_thumbnail_spacing);
         mPhotoWall = (GridView) findViewById(R.id.photo_wall);
-        mAdpater = new PhotoWallAdapter(this, 0, Images.imageThumbUrls, mPhotoWall);
-        mPhotoWall.setAdapter(mAdpater);
+        mAdapter = new PhotoWallAdapter(this, 0, Images.imageThumbUrls, mPhotoWall);
+        mPhotoWall.setAdapter(mAdapter);
 
         //getViewTreeObserver().addOnGlobalLayoutListener()来获得宽度或者高度。
         mPhotoWall.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
                             int columnWidth = (mPhotoWall.getWidth() / numColumns) -
                                     mImageThumbSpacing;
                             int columnHeight = (int) Math.floor(columnWidth * 1.4);
-                            mAdpater.setItemHeight(columnHeight);
+                            mAdapter.setItemHeight(columnHeight);
                             mPhotoWall.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         }
                     }
@@ -51,13 +51,13 @@ public class MainActivity extends Activity {
     protected void onPause() {
         super.onPause();
         //将缓存记录同步到journal文件中。
-        mAdpater.flushCache();
+        mAdapter.flushCache();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // 退出程序时结束所有的下载任务
-        mAdpater.cancelAllTask();
+        mAdapter.cancelAllTask();
     }
 }

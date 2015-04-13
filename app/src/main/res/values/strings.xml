@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="border_top">BorderTop</string>
+    <string name="border_bottom">BorderBottom</string>
+    <string name="image_url">ImageUrl</string>
 </resources>

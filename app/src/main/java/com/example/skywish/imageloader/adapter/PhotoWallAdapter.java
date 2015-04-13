@@ -84,7 +84,6 @@ public class PhotoWallAdapter extends ArrayAdapter<String> {
             imageView.getLayoutParams().height = mItemHeight;
         }
         //给imageview设置一个TAG，保证异步加载图片不会乱序
-//        imageView.setMinimumHeight();
         imageView.setTag(url);
         imageView.setImageResource(R.drawable.bg);
         loadBitmaps(imageView, url);
